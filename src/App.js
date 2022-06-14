@@ -1,5 +1,4 @@
-//import logo from './logo.svg';
-import './App.css';
+import './scss/app.scss';
 import logo from './img/pizza-logo.svg';
 
 function App() {
