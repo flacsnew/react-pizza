@@ -1,15 +1,10 @@
 import React from 'react';
 
 const PizzaBlock = ({ title, price, imageUrl, types, sizes }) => {
-
     const [pizzaCount, setPizzaCount] = React.useState(0);
     const [pizzaType, setPizzaType] = React.useState(0);
     const [pizzaSize, setPizzaSize] = React.useState(0);
-
-    const typeNames = [
-        'тонкое',
-        'традиционное'
-    ]
+    const typeNames = ['тонкое', 'традиционное']
 
     const addPizzaClick = () => {
         setPizzaCount(pizzaCount + 1);
@@ -17,35 +12,23 @@ const PizzaBlock = ({ title, price, imageUrl, types, sizes }) => {
 
     return (
         <div className="pizza-block">
-            <img
-                className="pizza-block__image"
-                src={ imageUrl }
-                alt="Pizza"
-            />
-            <h4 className="pizza-block__title">{ title }</h4>
+            <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+            <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    {
-                        types.map((value, i) => {
-                            let tmp = '';
-                            if (pizzaType === i) { tmp = 'active' }
-                            return <li key={i} onClick={() => setPizzaType(i) } className={tmp}>{ typeNames[value] }</li>
-                        })
-                    }
+                    {types.map((value, i) => (
+                        <li key={i} onClick={() => setPizzaType(i)} className={pizzaType === i ? 'active' : ''}>{typeNames[value]}</li>
+                    ))}
                 </ul>
                 <ul>
-                    {
-                        sizes.map((value, i) => {
-                            let tmp = '';
-                            if (pizzaSize === i) { tmp = 'active' }
-                            return <li key={i} onClick={() => setPizzaSize(i) } className={tmp}>{ value } см.</li>
-                        })
-                    }
+                    {sizes.map((value, i) => (
+                        <li key={i} onClick={() => setPizzaSize(i)} className={pizzaSize === i ? 'active' : ''}>{value} см.</li>
+                    ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от { price } ₽</div>
-                <button className="button button--outline button--add" onClick={ () => addPizzaClick() }>
+                <div className="pizza-block__price">от {price} ₽</div>
+                <button className="button button--outline button--add" onClick={() => addPizzaClick()}>
                     <svg
                         width="12"
                         height="12"
@@ -59,7 +42,7 @@ const PizzaBlock = ({ title, price, imageUrl, types, sizes }) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>{ pizzaCount }</i>
+                    <i>{pizzaCount}</i>
                 </button>
             </div>
         </div>

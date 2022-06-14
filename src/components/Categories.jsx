@@ -10,21 +10,15 @@ const Categories = () => {
         'Острые',
         'Закрытые'
     ]
-
     const onCategoryClick = (id) => {
         setCatActiveId(id);
     }
-
     return (
         <div className="categories">
             <ul>
-                {
-                    catNames.map((value, i) => {
-                        let tmp = '';
-                        if (catActiveId === i) { tmp = 'active' }
-                        return <li key={i} onClick={() => onCategoryClick(i) } className={tmp}>{value}</li>
-                    })
-                }
+                {catNames.map((value, i) => {
+                    return <li key={i} onClick={() => onCategoryClick(i)} className={(catActiveId === i) ? 'active' : ''}>{value}</li>
+                })}
             </ul>
         </div>
     )
