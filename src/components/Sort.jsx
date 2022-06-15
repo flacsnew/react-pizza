@@ -31,7 +31,7 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setModal()}>{ typeSortArray[typeSortId]  }</span>
+                <span onClick={() => setModal()}>{typeSortArray[typeSortId]}</span>
             </div>
             {
                 isModalVisible && (
