@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Sort = () => {
+const Sort = ({ typeSortingId, setTypeSortingId }) => {
     const [isModalVisible, setModalVisible] = React.useState(false);
-    const [typeSortId, setTypeSortId] = React.useState(0);
+    // const [typeSortId, setTypeSortId] = React.useState(typeSortingId); //0);
     const typeSortArray = [
         'популярности', 'цене', 'алфавиту'
     ]
-
     const setModal = () => {
         setModalVisible(!isModalVisible);
     }
     const onTypesSortClick = (id) => {
-        setTypeSortId(id);
+        //setTypeSortId(id);
+        setTypeSortingId(id);
         setModalVisible(false);
     }
 
@@ -31,14 +31,14 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setModal()}>{typeSortArray[typeSortId]}</span>
+                <span onClick={() => setModal()}>{typeSortArray[typeSortingId]}</span>
             </div>
             {
                 isModalVisible && (
                     <div className="sort__popup">
                         <ul>
                             {typeSortArray.map((value, i) => {
-                                return <li key={i} onClick={() => onTypesSortClick(i)} className={(typeSortId === i) ? 'active' : ''}>{value}</li>
+                                return <li key={i} onClick={() => onTypesSortClick(i)} className={(typeSortingId === i) ? 'active' : ''}>{value}</li>
                             })}
                         </ul>
                     </div>

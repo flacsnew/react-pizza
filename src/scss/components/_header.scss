@@ -12,6 +12,13 @@
 
   &__logo {
     display: flex;
+    align-items: center;
+
+    a {
+      &.logo {
+        display: block;
+      }
+    }
 
     img {
       margin-right: 15px;

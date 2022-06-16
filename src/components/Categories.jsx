@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Categories = () => {
-    const [catActiveId, setCatActiveId] = React.useState(0);
+const Categories = ({ categoryId, setCategoryId }) => {
     const catNames = [
-        'Все',
+        //'Все',
         'Мясные',
         'Вегетарианская',
         'Гриль',
@@ -11,13 +10,14 @@ const Categories = () => {
         'Закрытые'
     ]
     const onCategoryClick = (id) => {
-        setCatActiveId(id);
+        setCategoryId(id);
     }
     return (
         <div className="categories">
             <ul>
+                <li key="-1" onClick={() => onCategoryClick(-1)} className={(categoryId === -1) ? 'active' : ''}>Все</li>
                 {catNames.map((value, i) => {
-                    return <li key={i} onClick={() => onCategoryClick(i)} className={(catActiveId === i) ? 'active' : ''}>{value}</li>
+                    return <li key={i} onClick={() => onCategoryClick(i)} className={(categoryId === i) ? 'active' : ''}>{value}</li>
                 })}
             </ul>
         </div>
