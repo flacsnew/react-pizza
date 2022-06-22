@@ -11,13 +11,15 @@ import {
 } from "react-router-dom";
 
 const App = () => {
+    const [searchQuery, setSearchQuery] = React.useState('');
+
     return (
         <div className="wrapper">
-            <Header />
+            <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <div className="content">
                 <div className="container">
                     <Routes>
-                        <Route path="/" element={ <Home /> } />
+                        <Route path="/" element={ <Home searchQuery={searchQuery} /> } />
                         <Route path="/cart" element={ <Cart /> } />
                         <Route path="*" element={ <NotFound /> } />
                     </Routes>

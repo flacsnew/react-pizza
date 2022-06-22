@@ -26,7 +26,7 @@ body {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
   }
 
   &__top {
@@ -49,6 +49,7 @@ body {
   }
 }
 
+// ==== Cart ====
 .cart {
   &__top {
     display: flex;

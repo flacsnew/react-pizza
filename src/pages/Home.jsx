@@ -4,7 +4,7 @@ import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import Placeholder from '../components/PizzaBlock/placeholder';
 
-const Home = () => {
+const Home = ({ searchQuery }) => {
     let [pizzas, setPizzas] = React.useState([]);
     let [isLoading, setLoading] = React.useState(true);
     // ==== Global Data ====
@@ -18,11 +18,11 @@ const Home = () => {
     // =====================
     // onMount
     React.useEffect(() => {
-        let getCatId = '';    
+        let getCatId = '';
         (categoryId === -1) ? getCatId = '' : getCatId = categoryId; // fix bug
         let params = new URLSearchParams({
             category: getCatId,
-            sortBy: typeSortingObj.sort, 
+            sortBy: typeSortingObj.sort,
             order: 'asc'
         });
         setLoading(true);
@@ -34,7 +34,7 @@ const Home = () => {
     return (
         <>
             <div className="content__top">
-                <Categories categoryId={categoryId} setCategoryId={setCategoryId}  />
+                <Categories categoryId={categoryId} setCategoryId={setCategoryId} />
                 <Sort typeSortingObj={typeSortingObj} setTypeSortingObj={setTypeSortingObj} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
@@ -42,7 +42,9 @@ const Home = () => {
                 {
                     isLoading
                         ? [... new Array(10)].map((_, index) => <Placeholder key={index} />)
-                        : pizzas.map((object) => <PizzaBlock key={object.id} {...object} />)
+                        : pizzas
+                            //.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+                            .map((object) => <PizzaBlock key={object.id} {...object} />)
                 }
             </div>
         </>
